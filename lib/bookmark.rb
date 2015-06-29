@@ -14,11 +14,16 @@ class Bookmarker < Sinatra::Base
 
   post '/links' do
     link = Link.create(url: params[:url], title: params[:title])
-    tag  = Tag.create(tag: params[:tags])
+    tag  = Tag.create(text: params[:text])
     link.tags << tag
     link.save
-    p link.tags
     redirect to('/links')
+  end
+
+  get '/tags/:text' do
+    tag = Tag.first(text: params[:text])
+    @links = tag ? tag.links : []
+    erb :'links/index'
   end
 
   # start the server if ruby file executed directly

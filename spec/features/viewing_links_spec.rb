@@ -19,16 +19,16 @@ feature 'Viewing links' do
     before(:each) do
     Link.create(url: 'http://www.makersacademy.com',
                 title: 'Makers Academy',
-                tags: [Tag.first_or_create(tag: 'education')])
+                tags: [Tag.first_or_create(text: 'education')])
     Link.create(url: 'http://www.google.com',
                 title: 'Google',
-                tags: [Tag.first_or_create(tag: 'search')])
+                tags: [Tag.first_or_create(text: 'search')])
     Link.create(url: 'http://www.zombo.com',
                 title: 'This is Zombocom',
-                tags: [Tag.first_or_create(tag: 'bubbles')])
+                tags: [Tag.first_or_create(text: 'bubbles')])
     Link.create(url: 'http://www.bubble-bobble.com',
                 title: 'Bubble Bobble',
-                tags: [Tag.first_or_create(tag: 'bubbles')])
+                tags: [Tag.first_or_create(text: 'bubbles')])
   end
 
   scenario 'I can filter links by tag' do
