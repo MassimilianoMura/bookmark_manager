@@ -10,11 +10,14 @@ class Bookmarker < Sinatra::Base
 
   get '/links/new' do
     erb :new
-
   end
 
   post '/links' do
-    Link.create(url: params[:url], title: params[:title])
+    link = Link.create(url: params[:url], title: params[:title])
+    tag  = Tag.create(tag: params[:tags])
+    link.tags << tag
+    link.save
+    p link.tags
     redirect to('/links')
   end
 
